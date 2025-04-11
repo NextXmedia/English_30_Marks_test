@@ -274,7 +274,7 @@
         <div class="pie-chart-container">
             <canvas id="result-pie-chart"></canvas>
         </div>
-        <button onclick="showAnswers()">Show Correct Answers</button>
+        <button id="show-answers-btn" onclick="showAnswers()">Show Correct Answers</button>
     </div>
 
     <!-- Answer Review Page -->
@@ -480,6 +480,15 @@
         let answers = [];
 
         function submitQuiz() {
+            const button = document.getElementById("show-answers-btn");
+            button.disabled = true;
+            button.innerText = "Please wait...";
+
+            // Re-enable after 60 seconds (60000 ms)
+            setTimeout(() => {
+                button.disabled = false;
+                button.innerText = "Show Answers";
+            }, 60000);
             clearInterval(timer);
             let score = 0;
             answers = [];
