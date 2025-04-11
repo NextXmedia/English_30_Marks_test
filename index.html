@@ -221,10 +221,21 @@
             cursor: pointer;
             border-radius: 5px;
         }
+        .hideBox{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.447);
+            z-index: 11;
+            display: none;
+            
+        }
     </style>
 </head>
 <body>
-    
+    <div class="hideBox"></div>
     <nav class="navbar"><img src="next-academy-logo.png" alt=""> <h1>English Test</h1> <button>30 Marks</button></nav>
 
     <!-- Popup to collect student details -->
@@ -476,6 +487,9 @@
                 const selectedAnswer = document.querySelector(`input[name="q${index}"]:checked`);
                 const correctAnswer = q.correct;
                 const userAnswer = selectedAnswer ? parseInt(selectedAnswer.value) : null;
+                    let hiddenBox = document.querySelector('.hideBox');
+
+                hiddenBox.style.display = "flex";
                 answers.push({
                     question: q.question,
                     options: q.options,
